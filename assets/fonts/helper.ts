@@ -2,7 +2,7 @@
 export const getFontFamily = (baseFont = 'Inter', weight: string) => {
   switch (weight) {
     case '100':
-      return `${baseFont}-thin`;
+      return `${baseFont}-Thin`;
     case '200':
       return `${baseFont}-ExtraLight`;
     case '300':
