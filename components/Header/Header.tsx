@@ -5,9 +5,10 @@ import style from './style';
 type Props = {
   title?: string;
   type?: number;
+  color?: string;
 };
 
-const Header = ({title = '', type}: Props): JSX.Element => {
+const Header = ({title = '', type, color = '#000000'}: Props): JSX.Element => {
   const styleToApply = () => {
     switch (type) {
       case 1:
@@ -22,7 +23,7 @@ const Header = ({title = '', type}: Props): JSX.Element => {
   };
   return (
     <View>
-      <Text style={styleToApply()}>{title}</Text>
+      <Text style={[styleToApply(), color && {color: color}]}>{title}</Text>
     </View>
   );
 };
