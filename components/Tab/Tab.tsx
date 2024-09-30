@@ -16,7 +16,7 @@ const Tab = ({
   onPress = () => {}, //default value is empty function
 }: Props): JSX.Element => {
   const [width, setWidth] = useState(0);
-  const textRef = useRef(null);
+  const textRef = useRef<Text>(null);
   const paddingHorizontal = 33;
   const tabWidth = {
     width: horizontalScale(paddingHorizontal * 2 + width),
