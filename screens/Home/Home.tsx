@@ -6,6 +6,7 @@ import Header from '../../components/Header/Header';
 import globalStyle from '../../assets/styles/globalStyle';
 import Button from '../../components/Button/Button';
 import Tab from '../../components/Tab/Tab';
+import Badge from '../../components/Badge/Badge';
 
 export const Home = (): JSX.Element => {
   return (
@@ -13,6 +14,7 @@ export const Home = (): JSX.Element => {
       <Header title="Azzari A." type={1} />
       <Tab title="Highlight" />
       <Tab title="Highlight" isInactive />
+      <Badge title="Environment" />
     </SafeAreaView>
   );
 };
