@@ -19,6 +19,7 @@ import Search from '../../components/Search/Search';
 export const Home = (): JSX.Element => {
   const user = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch();
+  const categories = useSelector((state: RootState) => state.categories);
 
   return (
     <SafeAreaView style={[globalStyle.backgroundWhite, globalStyle.flex]}>

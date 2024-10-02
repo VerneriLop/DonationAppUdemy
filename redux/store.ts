@@ -4,11 +4,13 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {persistReducer, persistStore} from 'redux-persist';
 import {logger} from 'redux-logger';
 import User from './reducers/User';
+import Categories from './reducers/Categories';
 
 export type RootState = ReturnType<typeof rootReducer>;
 
 const rootReducer = combineReducers({
   user: User,
+  categories: Categories,
 });
 
 const configuration = {
