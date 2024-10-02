@@ -2,14 +2,17 @@ import React from 'react';
 import MainNavigation from './navigation/MainNavigation';
 import {NavigationContainer} from '@react-navigation/native';
 import {Provider} from 'react-redux';
-import store from './redux/store';
+import store, {persistor} from './redux/store';
+import {PersistGate} from 'redux-persist/integration/react';
 
 const App = (): React.JSX.Element => {
   return (
     <Provider store={store}>
-      <NavigationContainer>
-        <MainNavigation />
-      </NavigationContainer>
+      <PersistGate persistor={persistor} loading={null}>
+        <NavigationContainer>
+          <MainNavigation />
+        </NavigationContainer>
+      </PersistGate>
     </Provider>
   );
 };
