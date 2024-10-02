@@ -7,9 +7,10 @@ import {scaleFontSize} from '../../assets/styles/scaling';
 
 type Props = {
   onSearch?: (searchValue: string) => void;
+  placeholder?: string;
 };
 
-const Search = ({onSearch = () => {}}: Props) => {
+const Search = ({onSearch = () => {}, placeholder = 'Search'}: Props) => {
   const textInputRef = useRef<TextInput>(null);
   const [search, setSearch] = useState('');
   const handleFocus = () => {
@@ -31,6 +32,7 @@ const Search = ({onSearch = () => {}}: Props) => {
         size={scaleFontSize(22)}
       />
       <TextInput
+        placeholder={placeholder}
         ref={textInputRef}
         style={style.searchInput}
         value={search}
