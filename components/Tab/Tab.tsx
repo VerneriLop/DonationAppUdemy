@@ -7,13 +7,15 @@ import {horizontalScale} from '../../assets/styles/scaling';
 type Props = {
   title: string;
   isInactive?: boolean;
-  onPress?: () => void;
+  onPress?: (tabId: number) => void;
+  tabId: number;
 };
 
 const Tab = ({
   title,
   isInactive = false,
   onPress = () => {}, //default value is empty function
+  tabId,
 }: Props): JSX.Element => {
   const [width, setWidth] = useState(0);
   const textRef = useRef<Text>(null);
@@ -24,9 +26,8 @@ const Tab = ({
 
   return (
     <Pressable
-      disabled={isInactive}
       style={[style.tab, isInactive && style.inactiveTab, tabWidth]}
-      onPress={() => onPress()}>
+      onPress={() => onPress(tabId)}>
       <Text
         onTextLayout={event => {
           setWidth(event.nativeEvent.lines[0].width);
