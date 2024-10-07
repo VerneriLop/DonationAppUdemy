@@ -1,6 +1,6 @@
 import {PayloadAction, createSlice} from '@reduxjs/toolkit';
 
-type Donation = {
+export type Donation = {
   name: string;
   description: string;
   image: string;

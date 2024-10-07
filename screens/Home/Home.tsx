@@ -19,6 +19,7 @@ import Search from '../../components/Search/Search';
 import Tab from '../../components/Tab/Tab';
 import {updateSelectedCategoryId} from '../../redux/reducers/Categories';
 import {Category} from '../../redux/reducers/Categories';
+import {Donation} from '../../redux/reducers/Donations';
 
 export const Home = (): JSX.Element => {
   const user = useSelector((state: RootState) => state.user);
@@ -26,13 +27,19 @@ export const Home = (): JSX.Element => {
   const categories = useSelector((state: RootState) => state.categories);
   const donations = useSelector((state: RootState) => state.donations);
 
+  const [donationItems, setDonationItems] = useState<Donation[]>([]);
   const [categoryPage, setCategoryPage] = useState<number>(1);
   const [categoryList, setCategoryList] = useState<Category[]>([]);
   const [isLoadingCategories, setIsLoadingCategories] =
     useState<boolean>(false);
   const categoryPageSize = 4;
 
-  console.log('current donations donationsState', donations);
+  useEffect(() => {
+    const items = donations.items.filter(value =>
+      value.categoryIds.includes(categories.selectedCategoryId),
+    );
+    setDonationItems(items);
+  }, [categories.selectedCategoryId]);
 
   useEffect(() => {
     setIsLoadingCategories(true);
