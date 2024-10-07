@@ -24,12 +24,15 @@ export const Home = (): JSX.Element => {
   const user = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch();
   const categories = useSelector((state: RootState) => state.categories);
+  const donations = useSelector((state: RootState) => state.donations);
 
   const [categoryPage, setCategoryPage] = useState<number>(1);
   const [categoryList, setCategoryList] = useState<Category[]>([]);
   const [isLoadingCategories, setIsLoadingCategories] =
     useState<boolean>(false);
   const categoryPageSize = 4;
+
+  console.log('current donations donationsState', donations);
 
   useEffect(() => {
     setIsLoadingCategories(true);
