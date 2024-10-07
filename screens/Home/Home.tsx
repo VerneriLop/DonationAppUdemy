@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   FlatList,
   Image,
@@ -18,11 +18,40 @@ import {resetToInitialState} from '../../redux/reducers/User';
 import Search from '../../components/Search/Search';
 import Tab from '../../components/Tab/Tab';
 import {updateSelectedCategoryId} from '../../redux/reducers/Categories';
+import {Category} from '../../redux/reducers/Categories';
 
 export const Home = (): JSX.Element => {
   const user = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch();
   const categories = useSelector((state: RootState) => state.categories);
+
+  const [categoryPage, setCategoryPage] = useState<number>(1);
+  const [categoryList, setCategoryList] = useState<Category[]>([]);
+  const [isLoadingCategories, setIsLoadingCategories] =
+    useState<boolean>(false);
+  const categoryPageSize = 4;
+
+  useEffect(() => {
+    setIsLoadingCategories(true);
+    setCategoryList(
+      pagination(categories.categories, categoryPage, categoryPageSize),
+    );
+    setCategoryPage(prev => prev + 1);
+    setIsLoadingCategories(false);
+  }, []);
+
+  const pagination = (
+    items: Category[],
+    pageNumber: number,
+    pageSize: number,
+  ): Category[] => {
+    const startIndex = (pageNumber - 1) * pageSize;
+    const endIndex = startIndex + pageSize;
+    if (startIndex >= items.length) {
+      return [];
+    }
+    return items.slice(startIndex, endIndex);
+  };
 
   return (
     <SafeAreaView style={[globalStyle.backgroundWhite, globalStyle.flex]}>
@@ -55,10 +84,27 @@ export const Home = (): JSX.Element => {
         </View>
         <View style={style.categories}>
           <FlatList
+            onEndReachedThreshold={0.5}
+            onEndReached={() => {
+              if (isLoadingCategories) {
+                return;
+              }
+              setIsLoadingCategories(true);
+              let newData = pagination(
+                categories.categories,
+                categoryPage,
+                categoryPageSize,
+              );
+              if (newData.length > 0) {
+                setCategoryList(prevState => [...prevState, ...newData]);
+                setCategoryPage(prevState => prevState + 1);
+              }
+              setIsLoadingCategories(false);
+            }}
             horizontal
             showsHorizontalScrollIndicator={false}
-            data={categories.categories}
-            renderItem={({item}) => (
+            data={categoryList}
+            renderItem={({item}: {item: Category}) => (
               <View style={style.categoryItem} key={item.categoryId}>
                 <Tab
                   tabId={item.categoryId}
