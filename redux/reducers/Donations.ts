@@ -12,6 +12,7 @@ export type Donation = {
 type DonationsState = {
   items: Donation[];
   selectedDonationId: number | null;
+  selectedDonationInformation: Donation | null;
 };
 
 const items = [
@@ -220,6 +221,7 @@ const items = [
 const initialState: DonationsState = {
   items: items,
   selectedDonationId: null,
+  selectedDonationInformation: null,
 };
 
 const Donations = createSlice({
@@ -231,6 +233,9 @@ const Donations = createSlice({
     },
     updateSelectedDonationId: (state, action: PayloadAction<number>) => {
       state.selectedDonationId = action.payload;
+      state.selectedDonationInformation =
+        state.items.find(item => item.donationItemId === action.payload) ||
+        null;
     },
   },
 });

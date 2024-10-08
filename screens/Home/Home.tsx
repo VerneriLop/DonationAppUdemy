@@ -19,10 +19,14 @@ import Search from '../../components/Search/Search';
 import Tab from '../../components/Tab/Tab';
 import {updateSelectedCategoryId} from '../../redux/reducers/Categories';
 import {Category} from '../../redux/reducers/Categories';
-import {Donation} from '../../redux/reducers/Donations';
+import {
+  Donation,
+  updateSelectedDonationId,
+} from '../../redux/reducers/Donations';
 import SingleDonationItem from '../../components/SingleDonationItem/SingleDonationItem';
+import {Routes} from '../../navigation/Routes';
 
-export const Home = (): JSX.Element => {
+export const Home = ({navigation}: any): JSX.Element => {
   const user = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch();
   const categories = useSelector((state: RootState) => state.categories);
@@ -132,7 +136,10 @@ export const Home = (): JSX.Element => {
             {donationItems.map(value => (
               <View key={value.donationItemId} style={style.singleDonationItem}>
                 <SingleDonationItem
-                  onPress={selectedDonationId => {}}
+                  onPress={selectedDonationId => {
+                    dispatch(updateSelectedDonationId(selectedDonationId));
+                    navigation.navigate(Routes.SingleDonationItemScreen);
+                  }}
                   donationItemId={value.donationItemId}
                   uri={value.image}
                   donationTitle={value.name}
