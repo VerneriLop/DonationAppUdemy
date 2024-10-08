@@ -6,9 +6,15 @@ type Props = {
   title?: string;
   type?: number;
   color?: string;
+  numberOfLines?: number;
 };
 
-const Header = ({title = '', type, color = '#000000'}: Props): JSX.Element => {
+const Header = ({
+  title = '',
+  type,
+  color = '#000000',
+  numberOfLines,
+}: Props): JSX.Element => {
   const styleToApply = () => {
     switch (type) {
       case 1:
@@ -23,7 +29,11 @@ const Header = ({title = '', type, color = '#000000'}: Props): JSX.Element => {
   };
   return (
     <View>
-      <Text style={[styleToApply(), color && {color: color}]}>{title}</Text>
+      <Text
+        style={[styleToApply(), color && {color: color}]}
+        numberOfLines={numberOfLines !== undefined ? numberOfLines : undefined}>
+        {title}
+      </Text>
     </View>
   );
 };

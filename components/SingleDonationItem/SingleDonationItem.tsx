@@ -30,7 +30,12 @@ const SingleDonationItem = ({onPress = () => {}, ...props}: Props) => {
         />
       </View>
       <View style={style.donationInformation}>
-        <Header title={props.donationTitle} type={3} color={'#0A043C'} />
+        <Header
+          title={props.donationTitle}
+          type={3}
+          color={'#0A043C'}
+          numberOfLines={1}
+        />
         <View style={style.price}>
           <Header
             title={'$' + props.price.toFixed(2)}
