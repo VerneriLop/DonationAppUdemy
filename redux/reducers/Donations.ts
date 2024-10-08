@@ -6,7 +6,7 @@ export type Donation = {
   image: string;
   donationItemId: number;
   categoryIds: number[];
-  price: string | number;
+  price: string;
 };
 
 type DonationsState = {
