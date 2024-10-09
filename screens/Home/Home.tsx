@@ -133,25 +133,30 @@ export const Home = ({navigation}: any): JSX.Element => {
         </View>
         {donationItems.length > 0 && (
           <View style={style.donationItemsContainer}>
-            {donationItems.map(value => (
-              <View key={value.donationItemId} style={style.singleDonationItem}>
-                <SingleDonationItem
-                  onPress={selectedDonationId => {
-                    dispatch(updateSelectedDonationId(selectedDonationId));
-                    navigation.navigate(Routes.SingleDonationItemScreen);
-                  }}
-                  donationItemId={value.donationItemId}
-                  uri={value.image}
-                  donationTitle={value.name}
-                  badgeTitle={
-                    categories.categories.filter(
-                      val => val.categoryId === categories.selectedCategoryId,
-                    )[0].name
-                  }
-                  price={parseFloat(value.price)}
-                />
-              </View>
-            ))}
+            {donationItems.map(value => {
+              const categoryInformation = categories.categories.find(
+                val => val.categoryId === categories.selectedCategoryId,
+              );
+              return (
+                <View
+                  key={value.donationItemId}
+                  style={style.singleDonationItem}>
+                  <SingleDonationItem
+                    onPress={selectedDonationId => {
+                      dispatch(updateSelectedDonationId(selectedDonationId));
+                      navigation.navigate(Routes.SingleDonationItemScreen, {
+                        categoryInformation,
+                      });
+                    }}
+                    donationItemId={value.donationItemId}
+                    uri={value.image}
+                    donationTitle={value.name}
+                    badgeTitle={categoryInformation?.name ?? 'Unknown category'}
+                    price={parseFloat(value.price)}
+                  />
+                </View>
+              );
+            })}
           </View>
         )}
       </ScrollView>

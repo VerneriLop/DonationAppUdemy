@@ -3,7 +3,7 @@ import {View, Text} from 'react-native';
 import style from './style';
 
 type Props = {
-  title?: string;
+  title: string;
   type?: number;
   color?: string;
   numberOfLines?: number;
