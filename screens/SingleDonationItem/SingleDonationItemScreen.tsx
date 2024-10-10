@@ -11,7 +11,7 @@ import globalStyle from '../../assets/styles/globalStyle';
 import Header from '../../components/Header/Header';
 import Button from '../../components/Button/Button';
 
-type CategoryInformation = {
+/*type CategoryInformation = {
   categoryId: number;
   name: string;
 };
@@ -28,9 +28,9 @@ type RouteObject = {
 type Props = {
   navigation: any;
   route: RouteObject;
-};
+};*/
 
-const SingleDonationItemScreen = ({navigation, route}: Props): JSX.Element => {
+const SingleDonationItemScreen = ({navigation, route}: any): JSX.Element => {
   const donationItemInformation = useSelector(
     (state: RootState) => state.donations.selectedDonationInformation,
   );
