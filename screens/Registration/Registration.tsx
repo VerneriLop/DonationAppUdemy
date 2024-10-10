@@ -1,23 +1,34 @@
 import React, {useState} from 'react';
-import {Pressable, SafeAreaView, ScrollView, View} from 'react-native';
+import {SafeAreaView, ScrollView, View} from 'react-native';
 
 import Input from '../../components/Input/Input';
 import Header from '../../components/Header/Header';
 import Button from '../../components/Button/Button';
-import {Routes} from '../../navigation/Routes';
+import BackButton from '../../components/BackButton/BackButton';
 
 import style from './style';
 import globalStyle from '../../assets/styles/globalStyle';
 
-const Login = ({navigation}: any): JSX.Element => {
+const Registration = ({navigation}: any): JSX.Element => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+  const [fullname, setFullName] = useState<string>('');
 
   return (
     <SafeAreaView style={[globalStyle.backgroundWhite, globalStyle.flex]}>
+      <View style={style.backButton}>
+        <BackButton onPress={() => navigation.goBack()} />
+      </View>
       <ScrollView contentContainerStyle={style.container}>
         <View style={globalStyle.marginBottom24}>
-          <Header type={1} title={'Welcome back'} />
+          <Header type={1} title={'Hello and Welcome!'} />
+        </View>
+        <View style={globalStyle.marginBottom24}>
+          <Input
+            label={'First & Last Name'}
+            placeholder={'Enter your full name...'}
+            onChangeText={value => setFullName(value)}
+          />
         </View>
         <View style={globalStyle.marginBottom24}>
           <Input
@@ -36,16 +47,11 @@ const Login = ({navigation}: any): JSX.Element => {
           />
         </View>
         <View style={globalStyle.marginBottom24}>
-          <Button title={'Login'} />
+          <Button title={'Registration'} />
         </View>
-        <Pressable
-          style={style.registrationButton}
-          onPress={() => navigation.navigate(Routes.Registration)}>
-          <Header color={'#156CF7'} type={3} title={"Don't have an account?"} />
-        </Pressable>
       </ScrollView>
     </SafeAreaView>
   );
 };
 
-export default Login;
+export default Registration;
