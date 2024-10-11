@@ -1,26 +1,60 @@
 import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
 
+type CreateUserSuccess = {
+  status: true;
+  userCredential: FirebaseAuthTypes.UserCredential;
+};
+
+type CreateUserFailure = {
+  status: false;
+  error: string;
+};
+
+type CreateUserResponse = CreateUserSuccess | CreateUserFailure;
+
+type LoginSuccess = {
+  status: true;
+  data: {
+    displayName: string | null;
+    email: string | null;
+    token: string;
+  };
+};
+
+type LoginFailure = {
+  status: false;
+  error: string;
+};
+
+type LoginResponse = LoginSuccess | LoginFailure;
+
 export const createUser = async (
   fullName: string,
   email: string,
   password: string,
-): Promise<FirebaseAuthTypes.UserCredential | {error: string}> => {
+): Promise<CreateUserResponse> => {
   try {
     const user = await auth().createUserWithEmailAndPassword(email, password);
     await user.user.updateProfile({displayName: fullName});
     console.log(user);
-    return user;
+    return {
+      status: true,
+      userCredential: user,
+    };
   } catch (error: any) {
     if (error.code === 'auth/email-already-in-use') {
-      return {error: 'The email you entered is already in use.'};
+      return {status: false, error: 'The email you entered is already in use.'};
     } else if (error.code === 'auth/invalid-email') {
-      return {error: 'Please enter a valid email address.'};
+      return {status: false, error: 'Please enter a valid email address.'};
     }
-    return {error: 'Something went wrong with your request.'};
+    return {status: false, error: 'Something went wrong with your request.'};
   }
 };
 
-export const loginUser = async (email: string, password: string) => {
+export const loginUser = async (
+  email: string,
+  password: string,
+): Promise<LoginResponse> => {
   try {
     const response = await auth().signInWithEmailAndPassword(email, password);
     const token = await response.user.getIdToken();
