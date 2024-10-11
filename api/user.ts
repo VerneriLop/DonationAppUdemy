@@ -19,3 +19,32 @@ export const createUser = async (
     return {error: 'Something went wrong with your request.'};
   }
 };
+
+export const loginUser = async (email: string, password: string) => {
+  try {
+    const response = await auth().signInWithEmailAndPassword(email, password);
+    const token = await response.user.getIdToken();
+    return {
+      status: true,
+      data: {
+        displayName: response.user.displayName,
+        email: response.user.email,
+        token,
+      },
+    };
+  } catch (error: any) {
+    if (
+      error.code === 'auth/wrong-password' ||
+      error.code === 'auth/user-not-found' ||
+      error.code === 'auth/invalid-credential'
+    ) {
+      return {status: false, error: 'Wrong email or password'};
+    } else if (error.code === 'auth/too-many-requests') {
+      return {
+        status: false,
+        error: 'Too many failed attempts. Please try again later.',
+      };
+    }
+    return {status: false, error: 'Something went wrong'};
+  }
+};

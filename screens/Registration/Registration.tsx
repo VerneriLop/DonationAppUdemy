@@ -54,7 +54,7 @@ const Registration = ({navigation}: any): JSX.Element => {
         <View style={globalStyle.marginBottom24}>
           <Button
             isDisabled={
-              fullname.length <= 2 || email.length <= 5 || password.length <= 8
+              fullname.length <= 2 || email.length <= 5 || password.length < 8
             }
             title={'Registration'}
             onPress={async () => {
