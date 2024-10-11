@@ -8,6 +8,7 @@ import BackButton from '../../components/BackButton/BackButton';
 
 import style from './style';
 import globalStyle from '../../assets/styles/globalStyle';
+import {createUser} from '../../api/user';
 
 const Registration = ({navigation}: any): JSX.Element => {
   const [email, setEmail] = useState<string>('');
@@ -47,7 +48,10 @@ const Registration = ({navigation}: any): JSX.Element => {
           />
         </View>
         <View style={globalStyle.marginBottom24}>
-          <Button title={'Registration'} />
+          <Button
+            title={'Registration'}
+            onPress={async () => await createUser(fullname, email, password)}
+          />
         </View>
       </ScrollView>
     </SafeAreaView>
