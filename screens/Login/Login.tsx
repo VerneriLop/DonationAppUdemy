@@ -9,11 +9,17 @@ import {Routes} from '../../navigation/Routes';
 import style from './style';
 import globalStyle from '../../assets/styles/globalStyle';
 import {loginUser} from '../../api/user';
+//import {resetToInitialState} from '../../redux/reducers/User';
+import {useDispatch} from 'react-redux';
+import {logIn} from '../../redux/reducers/User';
 
 const Login = ({navigation}: any): JSX.Element => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [error, setError] = useState<string>('');
+  const dispatch = useDispatch();
+
+  //dispatch(resetToInitialState());
 
   return (
     <SafeAreaView style={[globalStyle.backgroundWhite, globalStyle.flex]}>
@@ -46,6 +52,7 @@ const Login = ({navigation}: any): JSX.Element => {
                 setError(user.error ?? 'An unexpected error occurred');
               } else {
                 setError('');
+                dispatch(logIn(user.data));
                 navigation.navigate(Routes.Home);
               }
             }}

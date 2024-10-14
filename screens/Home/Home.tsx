@@ -32,6 +32,8 @@ export const Home = ({navigation}: any): JSX.Element => {
   const categories = useSelector((state: RootState) => state.categories);
   const donations = useSelector((state: RootState) => state.donations);
 
+  console.log(user);
+
   const [donationItems, setDonationItems] = useState<Donation[]>([]);
   const [categoryPage, setCategoryPage] = useState<number>(1);
   const [categoryList, setCategoryList] = useState<Category[]>([]);
@@ -75,7 +77,7 @@ export const Home = ({navigation}: any): JSX.Element => {
           <View>
             <Text style={style.headerIntroText}>Hello,</Text>
             <View style={style.username}>
-              <Header title={user.firstName + ' ' + user.lastName[0] + '.👋'} />
+              <Header title={user.displayName + ' 👋'} />
             </View>
           </View>
           <Image
