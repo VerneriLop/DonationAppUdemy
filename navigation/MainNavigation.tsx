@@ -7,13 +7,22 @@ import Registration from '../screens/Registration/Registration';
 
 const Stack = createStackNavigator();
 
-const MainNavigation = (): JSX.Element => {
+export const NonAuthenticated = (): JSX.Element => {
   return (
     <Stack.Navigator
       initialRouteName={Routes.Login}
       screenOptions={{header: () => null, headerShown: false}}>
       <Stack.Screen name={Routes.Login} component={Login} />
       <Stack.Screen name={Routes.Registration} component={Registration} />
+    </Stack.Navigator>
+  );
+};
+
+export const Authenticated = (): JSX.Element => {
+  return (
+    <Stack.Navigator
+      initialRouteName={Routes.Home}
+      screenOptions={{header: () => null, headerShown: false}}>
       <Stack.Screen name={Routes.Home} component={Home} />
       <Stack.Screen
         name={Routes.SingleDonationItemScreen}
@@ -22,5 +31,3 @@ const MainNavigation = (): JSX.Element => {
     </Stack.Navigator>
   );
 };
-
-export default MainNavigation;

@@ -82,3 +82,7 @@ export const loginUser = async (
     return {status: false, error: 'Something went wrong'};
   }
 };
+
+export const logOut = async () => {
+  await auth().signOut();
+};
