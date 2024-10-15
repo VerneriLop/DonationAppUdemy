@@ -33,8 +33,6 @@ export const Home = ({navigation}: any): JSX.Element => {
   const categories = useSelector((state: RootState) => state.categories);
   const donations = useSelector((state: RootState) => state.donations);
 
-  console.log(user);
-
   const [donationItems, setDonationItems] = useState<Donation[]>([]);
   const [categoryPage, setCategoryPage] = useState<number>(1);
   const [categoryList, setCategoryList] = useState<Category[]>([]);

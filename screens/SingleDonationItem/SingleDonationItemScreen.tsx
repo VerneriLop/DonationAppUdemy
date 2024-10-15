@@ -34,7 +34,6 @@ const SingleDonationItemScreen = ({navigation, route}: any): JSX.Element => {
   const donationItemInformation = useSelector(
     (state: RootState) => state.donations.selectedDonationInformation,
   );
-  console.log(route);
   const categoryInformation = route.params.categoryInformation;
 
   return (
