@@ -1,7 +1,0 @@
-Ladatut fontit toimimaan
-1. kopioitiin fontit haluttuun kansioon tässä tapauksessa laitoin assets/fonts
-2.luotiin react-native-config.js tiedosto
-3. Terminaaliin: npx react-native-asset
-4. info.plist tiedosto on muuttunut ios varten
-5. android/app/src/main/assets/fonts on tullut fontit
-6. ja nyt rokkaa
