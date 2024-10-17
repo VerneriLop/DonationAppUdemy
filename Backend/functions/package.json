@@ -15,11 +15,18 @@
   "main": "lib/index.js",
   "dependencies": {
     "firebase-admin": "^12.6.0",
-    "firebase-functions": "^6.0.1"
+    "firebase-functions": "^6.0.1",
+    "body-parser": "^1.20.3",
+    "express": "^4.21.1"
   },
   "devDependencies": {
     "typescript": "^4.9.0",
-    "firebase-functions-test": "^3.1.0"
+    "firebase-functions-test": "^3.1.0",
+    "@babel/node": "^7.25.7",
+    "@babel/plugin-transform-runtime": "^7.25.7",
+    "@babel/preset-env": "^7.25.8",
+    "@babel/preset-typescript": "^7.25.7",
+    "@babel/runtime": "^7.25.7"
   },
   "private": true
 }
