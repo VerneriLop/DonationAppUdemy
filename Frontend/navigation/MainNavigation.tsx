@@ -4,6 +4,7 @@ import {Home} from '../screens/Home/Home';
 import SingleDonationItemScreen from '../screens/SingleDonationItem/SingleDonationItemScreen';
 import Login from '../screens/Login/Login';
 import Registration from '../screens/Registration/Registration';
+import Payment from '../screens/Payment/Payment';
 
 const Stack = createStackNavigator();
 
@@ -24,6 +25,7 @@ export const Authenticated = (): JSX.Element => {
       initialRouteName={Routes.Home}
       screenOptions={{header: () => null, headerShown: false}}>
       <Stack.Screen name={Routes.Home} component={Home} />
+      <Stack.Screen name={Routes.Payment} component={Payment} />
       <Stack.Screen
         name={Routes.SingleDonationItemScreen}
         component={SingleDonationItemScreen}
