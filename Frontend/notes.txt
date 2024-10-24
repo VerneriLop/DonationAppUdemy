@@ -5,3 +5,9 @@ Ladatut fontit toimimaan
 4. info.plist tiedosto on muuttunut ios varten
 5. android/app/src/main/assets/fonts on tullut fontit
 6. ja nyt rokkaa
+
+Käynnistä resetillä:
+npm start -- --reset-cache
+
+Podien asennus:
+pod install --repo-update

@@ -80,6 +80,7 @@ export const loginUser = async (
         error: 'Too many failed attempts. Please try again later.',
       };
     }
+    console.log(error);
     return {status: false, error: 'Something went wrong'};
   }
 };
