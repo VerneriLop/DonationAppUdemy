@@ -11,3 +11,7 @@ npm start -- --reset-cache
 
 Podien asennus:
 pod install --repo-update
+
+Android-projektin välimuistin ja rakennustuloksien puhdistus:
+cd android
+./gradlew clean
