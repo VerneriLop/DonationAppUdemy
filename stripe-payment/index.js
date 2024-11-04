@@ -19,6 +19,7 @@ app.post('/create-payment-intent', async (req, res) => {
   const stripe = new Stripe(stripeSecretKey, {apiVersion: '2020-08-27'});
 
   const customer = await stripe.customers.create({email});
+  console.log(req.body)
 
   const params = {
     amount: parseInt(amount),
