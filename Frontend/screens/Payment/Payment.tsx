@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import Config from 'react-native-config';
-import {SafeAreaView, ScrollView, Text, View} from 'react-native';
+import {Alert, SafeAreaView, ScrollView, Text, View} from 'react-native';
 import globalStyle from '../../assets/styles/globalStyle';
 import Header from '../../components/Header/Header';
 import style from './style';
@@ -13,7 +13,7 @@ import {
   useConfirmPayment,
 } from '@stripe/stripe-react-native';
 
-const Payment = () => {
+const Payment = ({navigation}: any) => {
   const donationItemInformation = useSelector(
     (state: RootState) => state.donations.selectedDonationInformation,
   );
@@ -46,6 +46,18 @@ const Payment = () => {
 
   const handlePayment = async () => {
     const clientSecret = await fetchPaymentIntentClientSecret();
+    const {error, paymentIntent} = await confirmPayment(clientSecret, {
+      paymentMethodType: 'Card',
+    });
+    if (error) {
+      Alert.alert(
+        'Error has occurred with your payment',
+        error.localizedMessage,
+      );
+    } else if (paymentIntent) {
+      Alert.alert('Successfull', 'The payment was confirmed successfully');
+      navigation.goBack();
+    }
   };
 
   return (
