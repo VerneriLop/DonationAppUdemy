@@ -1,0 +1,8 @@
+stripe-payment kansio:
+
+tässä kansiossa tarvitsisi olla vain nämä tiedostot jos haluaa että serveri toimii firebasessa:
+- functions
+- firebasejson
+- .firebaserc
+
+muut liittyvät lokaalin serverin pyörittämiseen.

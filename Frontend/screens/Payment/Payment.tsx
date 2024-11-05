@@ -23,22 +23,20 @@ const Payment = ({navigation}: any) => {
   const [isReady, setIsReady] = useState<boolean>(false);
   const {confirmPayment, loading} = useConfirmPayment();
   const user = useSelector((state: RootState) => state.user);
+  const API_URL = 'https://stripepayment-awo64flwlq-uc.a.run.app';
 
   const fetchPaymentIntentClientSecret = async () => {
-    const response = await fetch(
-      'http://localhost:3000/create-payment-intent',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email: user.email,
-          currency: 'usd',
-          amount: ((donationItemInformation?.price ?? 0) as number) * 100,
-        }),
+    const response = await fetch(API_URL + '/create-payment-intent', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
       },
-    );
+      body: JSON.stringify({
+        email: user.email,
+        currency: 'usd',
+        amount: ((donationItemInformation?.price ?? 0) as number) * 100,
+      }),
+    });
     const {clientSecret} = await response.json();
     console.log(clientSecret);
     return clientSecret;
