@@ -25,6 +25,8 @@
 		BFBF449F2CB8F4CD00A7D62F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BFBF449E2CB8F4CD00A7D62F /* GoogleService-Info.plist */; };
 		C04900A8E00244C49835B6E6 /* Inter-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B67902B9DD5F4534AEC80390 /* Inter-ExtraBold.ttf */; };
 		EF1A855A08CE4CDF963B4E08 /* Inter-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ED437900535E4215BB6F80E3 /* Inter-Bold.ttf */; };
+		1BF6AA3BCB344C0CB8CB46B6 /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD1980FBAD764E8694142C95 /* BootSplash.storyboard */; };
+		76C5D32EFD874449A71C9B9B /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55CED2E629BB49F4ACF3D02D /* Colors.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,8 @@
 		D698679AC264EB429F5DE7AE /* Pods_DonationApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DonationApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED437900535E4215BB6F80E3 /* Inter-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Bold.ttf"; path = "../assets/fonts/Inter-Bold.ttf"; sourceTree = "<group>"; };
+		AD1980FBAD764E8694142C95 /* BootSplash.storyboard */ = {isa = PBXFileReference; name = "BootSplash.storyboard"; path = "DonationApp/BootSplash.storyboard"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		55CED2E629BB49F4ACF3D02D /* Colors.xcassets */ = {isa = PBXFileReference; name = "Colors.xcassets"; path = "DonationApp/Colors.xcassets"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = folder.assetcatalog; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +121,8 @@
 				13B07FB71A68108700A75B9A /* main.m */,
 				13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */,
 				8A4052636C9F2717C6CA7DF9 /* PrivacyInfo.xcprivacy */,
+				AD1980FBAD764E8694142C95 /* BootSplash.storyboard */,
+				55CED2E629BB49F4ACF3D02D /* Colors.xcassets */,
 			);
 			name = DonationApp;
 			sourceTree = "<group>";
@@ -298,6 +304,8 @@
 				54171E03A90548E9AF8E0752 /* Inter-Regular.ttf in Resources */,
 				1017EA8FF6AC4BF6B88C6F0B /* Inter-SemiBold.ttf in Resources */,
 				463D9F4BE4AE4B5B85FD5161 /* Inter-Thin.ttf in Resources */,
+				1BF6AA3BCB344C0CB8CB46B6 /* BootSplash.storyboard in Resources */,
+				76C5D32EFD874449A71C9B9B /* Colors.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

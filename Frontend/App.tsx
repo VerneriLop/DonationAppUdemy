@@ -6,6 +6,7 @@ import store, {persistor} from './redux/store';
 import {PersistGate} from 'redux-persist/integration/react';
 import RootNavigation from './navigation/RootNavigation';
 import {checkToken} from './api/user';
+import BootSplash from 'react-native-bootsplash';
 
 const App = (): JSX.Element => {
   const appState = useRef(AppState.currentState);
@@ -30,7 +31,10 @@ const App = (): JSX.Element => {
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor} loading={null}>
-        <NavigationContainer>
+        <NavigationContainer
+          onReady={() => {
+            BootSplash.hide();
+          }}>
           <RootNavigation />
         </NavigationContainer>
       </PersistGate>
